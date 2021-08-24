@@ -1,0 +1,102 @@
+.widget {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    .widget-title {
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        font-weight: 700;
+
+    }
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.widget_sidebar {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    .widget-title {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333;
+        text-transform: uppercase;
+    }
+}
+
+.widget_search {
+    margin-bottom: 25px;
+}
+
+.widget_category {
+    @extend %list-reset;
+}
+
+.widget_tags {
+    a {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+        font-size: 14px;
+        line-height: 15px;
+        color: #303030;
+        background-color: #f7f7f7;
+        &:hover {
+            background-color: $color-1st;
+            color: #fff;
+        }
+    }
+}
+
+.widget_filter {
+    .ps-slider {
+        display: block;
+        margin-bottom: 30px;
+        height: 3px;
+        background-color: #cecece;
+        position: relative;
+        @include border-radius(0);
+        border: none;
+    }
+    .ui-slider-range {
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: $color-1st;
+        @include border-radius(0);
+        border: none;
+    }
+    .ui-slider-handle {
+        display: inline-block;
+        top: 50%;
+        height: 18px;
+        width: 18px;
+        outline: none;
+        cursor: pointer;
+        background-color: $color-1st;
+        border: none;
+        @include transform(translateY(-50%));
+        @include border-radius(50%);
+    }
+    .ps-slider__meta {
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.8em;
+        color: $color-heading;
+        span {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+    .ps-filter__btn {
+        background-color: #888888;
+        color: #fff;
+        &:hover {
+            background-color: $color-2nd;
+        }
+    }
+}
+
+

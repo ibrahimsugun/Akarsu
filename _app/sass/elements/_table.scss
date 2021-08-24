@@ -1,0 +1,127 @@
+.ps-table {
+    thead {
+        > tr {
+            > th {
+                font-family: $font-1st;
+                font-size: 18px;
+                font-weight: 700;
+                color: #515356;
+                text-transform: uppercase;
+                border-bottom: 1px solid #e5e5e5;
+            }
+        }
+    }
+    tbody {
+        > tr {
+            > td {
+                vertical-align: middle;
+                padding: 30px 10px;
+            }
+        }
+    }
+}
+
+.ps-table--compare {
+    border: 1px solid #e1e1e1;
+    tbody {
+        > tr {
+            > td {
+                padding: 20px 30px;
+                border: 1px solid #e1e1e1;
+                font-weight: 500;
+                color: #000;
+                text-transform: uppercase;
+                &:first-child {
+                    background-color: #faf7f3;
+                    border: solid 1px #e1e1e1;
+                    text-transform: uppercase;
+                    color: #000;
+                    font-size: 18px;
+                    font-weight: 700;
+                    vertical-align: middle !important;
+                }
+                .price {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #000;
+                }
+                .status {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #989898;
+                    text-transform: uppercase;
+                    &.in-stock {
+                        color: #13aa18;
+                    }
+                }
+            }
+        }
+    }
+    @include media("<md") {
+        .ps-btn {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+}
+
+.ps-table--whishlist {
+    thead {
+        > tr {
+            > th {
+                text-align: center;
+                &:first-child {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    tbody {
+        > tr {
+            > td {
+                text-align: center;
+                font-size: 18px;
+                color: #8d8d8d;
+                .ps-product-link {
+                    text-transform: uppercase;
+                    color: $color-1st;
+                    font-weight: 500;
+                    font-size: 14px;
+                    &:hover {
+                        color: #333;
+                    }
+                }
+                strong {
+                    color: #000;
+                }
+                &:first-child {
+                    width: 30%;
+                    text-align: left;
+                }
+                &:last-child {
+                    width: 150px;
+                }
+            }
+        }
+    }
+}
+
+.ps-table--listing {
+    .minus {
+        @include border-radius(50px 0 0 50px);
+    }
+    .plus {
+        @include border-radius(0 50px 50px 0);
+    }
+
+    @include media("<sm") {
+        tbody {
+            tr {
+                td {
+                    min-width: 200px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

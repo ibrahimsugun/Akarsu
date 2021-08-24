@@ -1,0 +1,197 @@
+.ps-list--social {
+    li {
+        display: inline-block;
+        margin-right: 12px;
+        a {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            color: #000;
+            background-color: #b3b3b3;
+            @include border-radius(50%);
+            i {
+                @include center;
+            }
+            &:hover {
+                background-color: $color-1st;
+            }
+        }
+        &:last-child() {
+            margin-right: 0;
+        }
+
+    }
+    &.ps-list--social-simple {
+        li {
+            a {
+                background-color: transparent;
+                color: #b2b2b2;
+                &:hover {
+                    color: $color-1st;
+                }
+            }
+        }
+    }
+}
+
+.ps-list--payment {
+    li {
+        display: inline-block;
+        margin-right: 10px;
+        a {
+            display: inline-block;
+        }
+        &:last-child() {
+            margin-right: 0;
+        }
+    }
+}
+
+.ps-list--shared {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: 0;
+    font-size: 0;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        @include transform(translateX(-50%));
+        @include triangle(12px, #44ccf6, down);
+    }
+    li {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        a {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            vertical-align: top;
+            i {
+                @include center();
+                color: #fff;
+                font-size: 16px;
+            }
+            &:hover {
+                color: #44ccf6;
+            }
+        }
+        &.facebook {
+            background-color: #3b5998;
+        }
+        &.twitter {
+            background-color: #44ccf6;
+        }
+        &.google {
+            background-color: rgba(209, 63, 45, 0.97)
+        }
+    }
+}
+
+.ps-list--arrow {
+    a {
+        position: relative;
+        display: block;
+        padding-left: 15px;
+        font-family: $font-1st;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        color: #626262;
+        &:before {
+            content: "\f0da";
+            @include vertical-align();
+            left: 0;
+            font-family: FontAwesome;
+        }
+        &:hover {
+            color: $color-1st;
+            .circle {
+                background-color: $color-2nd;
+                border-color: $color-2nd;
+                &:before {
+                    color: #fff;
+                    @include show;
+                }
+            }
+        }
+    }
+
+    li {
+        margin-bottom: 20px;
+        &.current {
+            a {
+                color: $color-2nd;
+            }
+            .circle {
+                background-color: $color-2nd;
+                &:before {
+                    @include show;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.ps-list--checked {
+    li {
+        margin-bottom: 20px;
+        a {
+            position: relative;
+            display: block;
+            padding-left: 30px;
+            font-size: 14px;
+            color: #313131;
+            &:before {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                width: 20px;
+                height: 20px;
+                border: solid 1px #8d8d8d;
+                @include transition(all .4s ease);
+            }
+            &:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 4px;
+                left: 8px;
+                color: #fff;
+                width: 6px;
+                height: 10px;
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+                @include transform(rotate(45deg));
+                @include hidden;
+            }
+            &:hover {
+                &:before {
+                    background-color: $color-1st;
+                    border-color: $color-1st;
+                }
+                &:after {
+                    @include show;
+                }
+            }
+        }
+        &.current {
+            a {
+                &:before {
+                    background-color: $color-1st;
+                    border-color: $color-1st;
+                }
+                &:after {
+                    @include show;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,600 @@
+.form-control {
+    outline: none;
+    @include box-shadow(none);
+    height: 50px;
+    @include border-radius(0);
+    background-color: #faf7f3;
+    border: none;
+    @include transition(all .4s ease);
+    color: #000;
+    @include placeholder() {
+        color: #000;
+    }
+    &:focus {
+        outline: none;
+        @include box-shadow(none);
+        border-color: $color-1st;
+    }
+}
+
+textarea.form-control {
+    height: auto;
+}
+
+.ps-input--has-icon {
+    position: relative;
+    > i {
+        @include vertical-align();
+        right: 15px;
+    }
+}
+
+.ps-select {
+    > i {
+        @include vertical-align();
+        right: 15px;
+    }
+    > select {
+        @include appearance(none)
+    }
+}
+
+.ps-checkbox {
+    position: relative;
+    display: block;
+    > input {
+        position: absolute;
+        visibility: hidden;
+        @include box-sizing(border-box);
+    }
+    label {
+        position: relative;
+        padding-left: 30px;
+        font-family: $font-1st;
+        color: #737373;
+        font-weight: 400;
+        cursor: pointer;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            height: 20px;
+            width: 20px;
+            z-index: 10;
+            border: 1px solid #ccc;
+            @include transition(all .4s ease);
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 6px;
+            height: 10px;
+            border: 2px solid $color-1st;
+            border-top: none;
+            border-left: none;
+            z-index: 5;
+            opacity: 0;
+            @include transform(rotate(0deg));
+            @include transition(all .4s ease);
+        }
+    }
+    input[type=checkbox]:checked ~ label {
+        &:before {
+            border-color: $color-1st;
+        }
+        &:after {
+            @include transform(rotate(45deg));
+            opacity: 1;
+        }
+    }
+    &--inline {
+        display: inline-block;
+    }
+}
+
+.ps-select {
+    display: inline-block;
+    button.btn {
+        height: 50px;
+        border: solid 1px #979797;
+        @include border-radius(0);
+        outline: none;
+        @include transition(all .4s ease);
+        color: $color-heading;
+        &:hover {
+            outline: none !important;
+            background-color: #fff;
+        }
+        &:focus, &:active {
+            outline: none !important;
+            background-color: #fff;
+        }
+
+    }
+}
+
+.ps-radio {
+    position: relative;
+    line-height: 30px;
+    > input {
+        position: absolute;
+        visibility: hidden;
+        @include box-sizing(border-box);
+        display: none;
+    }
+    label {
+        margin: 0;
+        position: relative;
+        padding-left: 20px;
+        font-family: $font-1st;
+        color: #737373;
+        font-weight: 400;
+        line-height: 30px;
+        vertical-align: top;
+        cursor: pointer;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            height: 30px;
+            width: 30px;
+            z-index: 10;
+            border: 1px solid #bfce5b;
+            background-color: #bfce5b;
+            @include transition(all .4s ease);
+            @include border-radius(50%);
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            @include border-radius(50%);
+            background-color: #aeaeae;
+            z-index: 20;
+            opacity: 0;
+            @include transform(scale(1.5, 1.5));
+            @include transition(all .6s ease);
+        }
+    }
+    input[type=radio]:checked ~ label {
+
+        &:before {
+            background-color: #fff;
+            @include box-shadow(0 0 30px 2px rgba($color-1st, .3));
+        }
+        &:after {
+            @include transform(scale(1, 1));
+            opacity: 1;
+            background-color: #bfce5b;
+        }
+    }
+    &--inline {
+        display: inline-block;
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &--square {
+        line-height: 35px;
+        label {
+            &:before {
+                width: 36px;
+                height: 36px;
+                background-color: #fff;
+                border-color: #e0e8f6;
+            }
+            &:after {
+                top: 8px;
+                left: 8px;
+                opacity: 1;
+                @include transform(scale(1, 1));
+                background-color: #bfce5b;
+            }
+            &:before, &:after {
+                @include border-radius(0);
+            }
+        }
+        input[type=radio]:checked ~ label {
+            &:before {
+                border-color: #bfce5b;
+            }
+        }
+    }
+    &--square-2 {
+        label {
+            &:before {
+                border-width: 2px;
+                @include border-radius(4px);
+            }
+        }
+    }
+    &--checked {
+        padding: 20px 0;
+        border-bottom: 1px solid #eef2f7;
+        > label {
+            position: relative;
+            display: block;
+            line-height: 15px;
+            font-size: 14px;
+            color: #212121;
+            padding-left: 30px;
+            span {
+                float: right;
+                color: #a9bcd7;
+            }
+            &:before {
+                width: 15px;
+                height: 15px;
+                border: 1px solid #a9bcd7;
+                @include border-radius(1px);
+                background-color: #fff;
+            }
+            &:after {
+                top: 2px;
+                left: 5px;
+                width: 5px;
+                height: 8px;
+                @include border-radius(0);
+                border-bottom: 2px solid #212121;
+                border-right: 2px solid #212121;
+                @include transition(all .3s ease);
+            }
+        }
+        input[type=radio]:checked ~ label {
+            color: $color-1st;
+            span {
+                color: $color-1st;
+            }
+            &:before {
+                @include box-shadow(none);
+                border-color: #212121;
+            }
+            &:after {
+                background-color: transparent;
+                @include transform(rotate(45deg));
+            }
+        }
+        &:last-child {
+            border-bottom-width: 0;
+        }
+    }
+    &--circle {
+        padding: 20px 0;
+        border-bottom: 1px solid #eef2f7;
+        > label {
+            position: relative;
+            display: block;
+            padding-left: 30px;
+            line-height: 15px;
+            font-size: 14px;
+            color: #212121;
+            span {
+                float: right;
+                color: #a9bcd7;
+            }
+            &:before {
+                width: 16px;
+                height: 16px;
+                background-color: #fff;
+                border: 1px solid #a9bcd7;
+                @include border-radius(50%);
+            }
+            &:after {
+                top: 4px;
+                left: 4px;
+                width: 8px;
+                height: 8px;
+                @include border-radius(50%);
+                border-bottom: 2px solid #212121;
+                border-right: 2px solid #212121;
+                @include transition(all .3s ease);
+            }
+        }
+        input[type=radio]:checked ~ label {
+            color: $color-1st;
+            span {
+                color: $color-1st;
+            }
+            &:before {
+                @include box-shadow(none);
+                border-color: #212121;
+            }
+            &:after {
+                background-color: #212121;
+            }
+        }
+        &:last-child {
+            border-bottom-width: 0;
+        }
+    }
+    &--small {
+        > label {
+            padding-left: 30px;
+
+            &:before {
+                top: 5px;
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                border-color: #fff;
+            }
+            &:after {
+                top: 10px;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+    }
+    @each $number, $value in (1: #ffa0ac, 2: #f3cb53, 3: #77cbbc, 4: #ff8a65, 5: #a0abaf, 6: #a078be, 7: #f48c73, 8: #f4c7b0, 9: #525252, 10: #6e8ccf) {
+        &--color#{$number} {
+            label {
+                &:before {
+                    border: 1px solid $value;
+                    background-color: $value;
+                }
+            }
+            input[type=radio]:checked ~ label {
+                &:after {
+                    background-color: $value;
+                }
+            }
+            &.ps-radio--square {
+                label {
+                    &:before {
+                        background-color: #fff;
+                        border-color: #e0e8f6;
+                    }
+                    &:after {
+                        background-color: $value;
+                    }
+                }
+                input[type=radio]:checked ~ label {
+                    &:before {
+                        border-color: $value;
+                    }
+                }
+            }
+            &.ps-radio--square-2 {
+                label {
+                    &:before {
+                        border-width: 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ps-number {
+    position: relative;
+    span {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 50%;
+        border-left: 1px solid #979797;
+        @include transition(all .4s ease);
+        &:before {
+            font-family: FontAwesome;
+            @include center();
+            color: $color-heading;
+        }
+        &.up {
+            border-bottom: 1px solid #979797;
+            &:before {
+                content: "\f106";
+            }
+        }
+        &.down {
+            top: auto;
+            bottom: 0;
+            &:before {
+                content: "\f107";
+
+            }
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: $color-1st;
+            &:before {
+                color: #fff;
+
+            }
+        }
+    }
+}
+
+.form-group--inline {
+    position: relative;
+    @include clearfix();
+    > label {
+        float: left;
+        margin-bottom: 0;
+        left: 0;
+        font-size: 16px;
+        line-height: 1.3em;
+        color: #5b5b5b;
+        font-weight: 400;
+        width: 200px;
+        padding-right: 10px;
+        span {
+            color: red;
+        }
+    }
+    .form-group__content {
+        float: left;
+        width: calc(100% - 200px);
+    }
+    &.textarea {
+        label {
+            @include transform(translateY(50%));
+            top: 0;
+        }
+    }
+    @include media("<sm") {
+        > label {
+            margin-right: 20px;
+        }
+        .form-group__content {
+            width: 100%;
+        }
+    }
+}
+
+.form-group--number {
+    display: inline-block;
+    .input-group-btn {
+        display: inline-block;
+    }
+    input.form-control {
+        position: relative;
+        top: 0;
+        margin-right: -4px;
+        display: inline-block;
+        width: 130px;
+        height: 40px;
+        text-align: center;
+        @include border-radius(0);
+        &:focus {
+            border-color: #f1f1f1;
+        }
+    }
+    button {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        border: none;
+        background-color: #000;
+        font-family: $font-1st;
+        color: #fff;
+        font-size: 20px;
+        @include transition(all .4s ease);
+        &:hover {
+            background-color: $color-1st;
+        }
+        &.minus {
+            float: left;
+        }
+    }
+}
+
+.ps-remove {
+    position: relative;
+    display: inline-block;
+    background-color: #f1f1f1;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    @include border-radius(50%);
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 15px;
+        height: 2px;
+        background-color: #b1b1b1;
+        @include transform-origin(50% 50%);
+        @include transition(all .4s ease);
+    }
+    &:before {
+        @include transform(translate(-50%, -50%) rotate(-45deg));
+    }
+    &:after {
+        @include transform(translate(-50%, -50%) rotate(45deg));
+    }
+    &:hover {
+        background-color: #333;
+        &:before, &:after {
+            background-color: #fff;
+        }
+    }
+}
+
+.ps-form--icon {
+    position: relative;
+    > i {
+        @include vertical-align();
+        right: 20px;
+    }
+}
+
+a[data-tooltip] {
+    position: relative;
+    display: none;
+    &:before {
+        display: inline-block;
+        content: attr(data-tooltip);
+        min-width: 120px;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        @include transform(translate(-50%, -10px));
+        font-size: 12px;
+        line-height: 20px;
+        padding: 5px 20px;
+        color: #fff;
+        @include border-radius(20px);
+        background-color: #000;
+        @include transition(all .4s ease-out);
+        @include hidden;
+    }
+    &:after {
+        content: '';
+        @include triangle(15px, #000, down);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        @include transform(translate(-50%, -5px));
+        @include hidden;
+        @include transition(all .4s ease-out);
+    }
+    &:hover {
+        &:before, &:after {
+            @include show;
+        }
+    }
+    @include media("<md") {
+        &:before, &:after {
+            display: none;
+        }
+    }
+
+}
+
+.form-group {
+    margin-bottom: 20px;
+    > label {
+        margin-bottom: 10px;
+        color: #4e3939;
+        font-weight: 400;
+    }
+}
+
+.ps-form--icon {
+    position: relative;
+    > i {
+        @include vertical-align();
+        right: 10px;
+        z-index: 100;
+        color: $color-text;
+    }
+}
+
+
+

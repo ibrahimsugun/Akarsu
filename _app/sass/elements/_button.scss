@@ -1,0 +1,157 @@
+.menu-toggle {
+    position: relative;
+    display: inline-block;
+    display: none;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    @include border-radius(50%);
+    span,
+    &:before,
+    &:after {
+        position: absolute;
+        right: 10px;
+        height: 2px;
+        width: 20px;
+        background-color: #303030;
+        z-index: 100;
+        @include transition(all 0.4s ease);
+    }
+    span {
+        top: 50%;
+        @include transform(translateY(-50%));
+    }
+    &:before,
+    &:after {
+        content: '';
+    }
+    &:before {
+        top: 12px;
+    }
+    &:after {
+        bottom: 12px;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    &.active {
+        span {
+            @include transform(translateX(100%));
+            visibility: hidden;
+            opacity: 0;
+        }
+        &:before,
+        &:after {
+            top: 50%;
+            bottom: auto;
+            width: 20px;
+            @include transform-origin(50% 50%);
+            background-color: #fc354c;;
+        }
+        &:before {
+            @include transform(rotate(45deg));
+        }
+        &:after {
+            @include transform(rotate(-45deg));
+        }
+    }
+    @include media("<lg") {
+        display: inline-block;
+    }
+}
+
+.ps-btn, button.ps-btn {
+    display: inline-block;
+    padding: 9px 60px 7px;
+    line-height: 25px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: $color-1st;
+    border: 2px solid $color-1st;
+    background-color: transparent;
+    @include border-radius(30px);
+    @include transition(all .4s ease);
+    &:hover {
+        background-color: $color-1st;
+        color: #fff;
+    }
+}
+
+.ps-btn--outline, button.ps-btn--outline {
+
+}
+
+.ps-btn--yellow, button.ps-btn--yellow {
+    background-color: $color-1st;
+    border-color: $color-1st;
+    color: #fff;
+    &:hover {
+        background-color: #000;
+        border-color: #000;
+    }
+}
+
+.ps-btn--favorite {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #999;
+    border: none;
+    font-size: 18px;
+    @include border-radius(50%);
+    vertical-align: top;
+    i {
+        @include center();
+        color: #fff;
+    }
+    &:hover {
+        background-color: $color-1st;
+
+    }
+
+}
+
+.ps-btn--gray, button.ps-btn--gray {
+    background-color: #ccc;
+    border: none;
+    color: #fff;
+    &:hover {
+        background-color: $color-1st;
+    }
+}
+.ps-btn--fullwidth {
+    width: 100%;
+}
+#back2top {
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    z-index: 10000;
+    background-color: transparent;
+    @include border-radius(50%);
+    border: 2px solid $color-1st;
+    @include transition(all 0.5s ease);
+    @include hidden;
+    i {
+        @include center();
+        color: $color-1st;
+        z-index: 10001;
+        font-size: 20px;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: $color-1st;
+        i {
+            color: #fff;
+        }
+    }
+    &.active {
+        bottom: 30px;
+        @include show;
+    }
+}
+
+
